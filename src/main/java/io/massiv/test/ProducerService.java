@@ -25,6 +25,8 @@ public class ProducerService {
         Connection connection = provider.getConnection();
         Channel channel = connection.createChannel();
         ProducerWrapper wrapper = new ProducerWrapper(channel);
-        wrapper.publish(exchangeName, new byte[0]);
+
+        DoubleProducerWrapper doubleWrapper = new DoubleProducerWrapper(wrapper);
+        doubleWrapper.publishDouble(new byte[0], exchangeName);
     }
 }

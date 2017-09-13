@@ -16,6 +16,7 @@ public class AppModule extends AbstractModule {
     protected void configure() {
         bind(ProducerService.class);
         bind(ConnectionProvider.class);
+        bind(ConsumerService.class);
         bind(new TypeLiteral<Set<Address>>() {
         }).annotatedWith(Names.named("hostAddresses")).toInstance(getHosts());
         bindConstant().annotatedWith(Names.named("queueName")).to("resolved.queue.name");
