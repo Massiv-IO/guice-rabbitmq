@@ -12,8 +12,6 @@ idea
 .settings/
 .gradle/
 classes/
-integral-repo*/
-integral-gitroot*/
 .sass-cache
 /tmp/
 docker-dir/image/

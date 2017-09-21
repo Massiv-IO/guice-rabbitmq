@@ -13,6 +13,7 @@ import java.io.IOException;
  */
 public class ProducerService {
 
+
     @Inject
     @Named("exchangeName")
     private String exchangeName;
@@ -20,6 +21,12 @@ public class ProducerService {
     @Inject
     private ConnectionProvider provider;
 
+    @Inject
+    private ExchangeConfiguration exchangeConfiguration;
+
+//    private ExchangeConfiguration getFoo(){
+//        return exchangeConfiguration;
+//    }
 
     public void doIt() throws IOException {
         Connection connection = provider.getConnection();
@@ -27,6 +34,9 @@ public class ProducerService {
         ProducerWrapper wrapper = new ProducerWrapper(channel);
 
         DoubleProducerWrapper doubleWrapper = new DoubleProducerWrapper(wrapper);
+
         doubleWrapper.publishDouble(new byte[0], exchangeName);
+
+        doubleWrapper.publishDouble(new byte[0], exchangeConfiguration.exchangeName);
     }
 }

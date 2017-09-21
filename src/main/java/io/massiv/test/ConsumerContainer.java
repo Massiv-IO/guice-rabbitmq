@@ -18,6 +18,6 @@ public class ConsumerContainer {
     }
 
     public void activate() throws IOException {
-        channel.basicConsume(queueName, new DefaultConsumer(channel));
+        channel.basicConsume(this.queueName, new DefaultConsumer(channel));
     }
 }

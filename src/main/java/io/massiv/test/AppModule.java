@@ -21,6 +21,10 @@ public class AppModule extends AbstractModule {
         }).annotatedWith(Names.named("hostAddresses")).toInstance(getHosts());
         bindConstant().annotatedWith(Names.named("queueName")).to("resolved.queue.name");
         bindConstant().annotatedWith(Names.named("exchangeName")).to(System.getProperty("resolved.exchange", "resolved.exchange"));
+
+        ExchangeConfiguration exchangeConfiguration = new ExchangeConfiguration("resolved.exchange.name2");
+        bind(ExchangeConfiguration.class).toInstance(exchangeConfiguration);
+
     }
 
     private Set<Address> getHosts() {
